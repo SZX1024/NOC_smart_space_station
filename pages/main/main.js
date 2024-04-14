@@ -5,7 +5,7 @@ import { formatTime } from "../../utils/util";
 const app = getApp();
 const MQTTADDRESS = "iae7574a.ala.cn-hangzhou.emqxsl.cn"; //mqtt服务器地址
 let client = null; //mqtt服务
-s
+
 // console.log(formatTime(new Date()).slice(5))
 
 Page({
@@ -294,32 +294,32 @@ Page({
 
       if (clickData.id == 0) {
         this.setData({
-          "device[0].isOpen" : false
+          "device[0].isOpen": false
         })
       }
       else if (clickData.id == 1) {
         this.setData({
-          "device[1].isOpen" : false
+          "device[1].isOpen": false
         })
       }
       else if (clickData.id == 2) {
         this.setData({
-          "device[2].isOpen" : false
+          "device[2].isOpen": false
         })
       }
       else if (clickData.id == 3) {
         this.setData({
-          "device[3].isOpen" : false
+          "device[3].isOpen": false
         })
       }
       else if (clickData.id == 4) {
         this.setData({
-          "device[4].isOpen" : false
+          "device[4].isOpen": false
         })
       }
       else if (clickData.id == 5) {
         this.setData({
-          "device[5].isOpen" : false
+          "device[5].isOpen": false
         })
       }
 
@@ -331,32 +331,32 @@ Page({
 
       if (clickData.id == 0) {
         this.setData({
-          "device[0].isOpen" : true
+          "device[0].isOpen": true
         })
       }
       else if (clickData.id == 1) {
         this.setData({
-          "device[1].isOpen" : true
+          "device[1].isOpen": true
         })
       }
       else if (clickData.id == 2) {
         this.setData({
-          "device[2].isOpen" : true
+          "device[2].isOpen": true
         })
       }
       else if (clickData.id == 3) {
         this.setData({
-          "device[3].isOpen" : true
+          "device[3].isOpen": true
         })
       }
       else if (clickData.id == 4) {
         this.setData({
-          "device[4].isOpen" : true
+          "device[4].isOpen": true
         })
       }
       else if (clickData.id == 5) {
         this.setData({
-          "device[5].isOpen" : true
+          "device[5].isOpen": true
         })
       }
     }
