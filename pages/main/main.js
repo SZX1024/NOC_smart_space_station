@@ -1,8 +1,8 @@
 // pages/main/main.js
 
-const app = getApp();
 import mqtt from "../../utils/mqtt.min";
-import { formatTime } from "../../utils/util"
+import { formatTime } from "../../utils/util";
+const app = getApp();
 const MQTTADDRESS = "iae7574a.ala.cn-hangzhou.emqxsl.cn"; //mqtt服务器地址
 let client = null; //mqtt服务
 
@@ -283,10 +283,73 @@ Page({
         id: clickData.id,
         isOpen: false
       }
+
+      if (clickData.id == 0) {
+        this.setData({
+          "device[0].isOpen" : false
+        })
+      }
+      else if (clickData.id == 1) {
+        this.setData({
+          "device[1].isOpen" : false
+        })
+      }
+      else if (clickData.id == 2) {
+        this.setData({
+          "device[2].isOpen" : false
+        })
+      }
+      else if (clickData.id == 3) {
+        this.setData({
+          "device[3].isOpen" : false
+        })
+      }
+      else if (clickData.id == 4) {
+        this.setData({
+          "device[4].isOpen" : false
+        })
+      }
+      else if (clickData.id == 5) {
+        this.setData({
+          "device[5].isOpen" : false
+        })
+      }
+
     } else {
       msg = {
         id: clickData.id,
         isOpen: true
+      }
+
+      if (clickData.id == 0) {
+        this.setData({
+          "device[0].isOpen" : true
+        })
+      }
+      else if (clickData.id == 1) {
+        this.setData({
+          "device[1].isOpen" : true
+        })
+      }
+      else if (clickData.id == 2) {
+        this.setData({
+          "device[2].isOpen" : true
+        })
+      }
+      else if (clickData.id == 3) {
+        this.setData({
+          "device[3].isOpen" : true
+        })
+      }
+      else if (clickData.id == 4) {
+        this.setData({
+          "device[4].isOpen" : true
+        })
+      }
+      else if (clickData.id == 5) {
+        this.setData({
+          "device[5].isOpen" : true
+        })
       }
     }
 
