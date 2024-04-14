@@ -63,6 +63,7 @@
     </view>
     <view class="setting_aera_item_btn">
         <button type="default" size="mini" bind:tap="connectMqtt" disabled="{{isConnect}}">连接</button>
+        <button type="default" size="mini" bind:tap="disconnectMqtt" disabled="{{!isConnect}}">断开</button>
       </view>
   </view>
 
@@ -74,6 +75,7 @@
     </view>
     <view class="setting_aera_item_btn">
       <button type="default" size="mini" bind:tap="addPush" disabled="{{isPush}}">订阅</button>
+      <button type="default" size="mini" bind:tap="unPush" disabled="{{!isPush}}">取消订阅</button>
     </view>
   </view>
 
@@ -85,6 +87,7 @@
     </view>
     <view class="setting_aera_item_btn">
         <button type="default" size="mini" bind:tap="addSub" disabled="{{isSub}}">连接</button>
+        <button type="default" size="mini" bind:tap="unSub" disabled="{{!isSub}}">取消连接</button>
       </view>
   </view>
 

@@ -190,6 +190,36 @@ Page({
       });
     });
   },
+  disconnectMqtt() {
+    client.end()
+    wx.showToast({
+      icon: "none",
+      title: "断开连接成功",
+    });
+    this,this.setData({
+      isConnect : false
+    })
+  },
+  unPush() {
+    client.unsubscribe(this.data.pushaddr)
+    wx.showToast({
+      icon: "none",
+      title: "取消订阅成功",
+    });
+    this.setData({
+      isPush : false
+    })
+  },
+  unSub() {
+    client.unsubscribe(this.data.subaddr)
+    wx.showToast({
+      icon: "none",
+      title: "取消成功",
+    });
+    this.setData({
+      isSub : false
+    })
+  },
   addPush() {
     let that = this
     //订阅一个主题
