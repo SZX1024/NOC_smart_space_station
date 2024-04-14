@@ -16,7 +16,7 @@
   <text>环境信息</text>
 </view>
 <view class="info_out" wx:if="{{isPush}}">
-  <view class="info_out_item" bind:tap='toChart' wx:for="{{sensor}}">
+  <view class="info_out_item" bind:tap='toChart' wx:for="{{sensor}}" data-param="{{item}}">
     <text>{{item.text}}</text>
     <image src="{{item.img}}" mode="aspectFit"/>
     <text>{{item.value + item.end_text}}</text>
@@ -47,19 +47,19 @@
     <text class="second_title" style="margin-left: 32rpx; padding-bottom: 12rpx;">mqtt配置</text>
     <view class="setting_item">
       <text>地址</text>
-      <input type="text" value="{{address}}" bindinput="addresssync" disabled="{{isConnect}}"/>
+      <input type="text" value="{{address}}" bindinput="addressSync" disabled="{{isConnect}}"/>
     </view>
     <view class="setting_item">
       <text>端口</text>
-      <input type="number" value="{{port}}" bindinput="portsync" disabled="{{isConnect}}"/>
+      <input type="number" value="{{port}}" bindinput="portSync" disabled="{{isConnect}}"/>
     </view>
     <view class="setting_item">
       <text>用户名</text>
-      <input type="text" value="{{username}}" bindinput="usernamesync" disabled="{{isConnect}}"/>
+      <input type="text" value="{{username}}" bindinput="usernameSync" disabled="{{isConnect}}"/>
     </view>
     <view class="setting_item">
       <text>密码</text>
-      <input type="text" password value="{{password}}" bindinput="passwdsync" disabled="{{isConnect}}"/>
+      <input type="text" password value="{{password}}" bindinput="passwdSync" disabled="{{isConnect}}"/>
     </view>
     <view class="setting_aera_item_btn">
         <button type="default" size="mini" bind:tap="connectMqtt" disabled="{{isConnect}}">连接</button>
@@ -71,7 +71,7 @@
   <view class="setting_aera">
     <view class="setting_item">
       <text>订阅</text>
-      <input type="text" placeholder="请输入订阅地址" value="{{pushaddr}}" bindinput="pushaddrsync" disabled="{{isPush}}"/>
+      <input type="text" placeholder="请输入订阅地址" value="{{pushaddr}}" bindinput="pushaddrSync" disabled="{{isPush}}"/>
     </view>
     <view class="setting_aera_item_btn">
       <button type="default" size="mini" bind:tap="addPush" disabled="{{isPush}}">订阅</button>
@@ -83,7 +83,7 @@
   <view class="setting_aera">
     <view class="setting_item">
       <text>发布</text>
-      <input type="text" placeholder="请输入发布地址" disabled="{{isSub}}" value="{{subaddr}}"/>
+      <input type="text" placeholder="请输入发布地址" disabled="{{isSub}}" bindinput="subaddrSync" value="{{subaddr}}"/>
     </view>
     <view class="setting_aera_item_btn">
         <button type="default" size="mini" bind:tap="addSub" disabled="{{isSub}}">连接</button>

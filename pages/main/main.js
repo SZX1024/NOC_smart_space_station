@@ -125,13 +125,6 @@ Page({
       wx.setStorageSync('port', this.data.port)
       wx.setStorageSync('username', this.data.username)
       wx.setStorageSync('password', this.data.password)
-
-      if (wx.getStorageSync('pushaddr')) {
-        this.addPush();
-      }
-      if (wx.getStorageSync('subaddr')) {
-        this.addSub()
-      }
     })
 
     client.on("message", (topic, message) => {
@@ -291,6 +284,11 @@ Page({
       pushaddr: e.detail.value
     })
   },
+  subaddrSync(e) {
+    this.setData({
+      subaddr: e.detail.value
+    })
+  },
 
   // 页面切换
   gotoSettingPage() {
@@ -301,10 +299,11 @@ Page({
     console.log("关闭设置界面")
     this.setData({ isSetting: false })
   },
-  toChart() {
+  toChart(e) {
+    // console.log(e.currentTarget.dataset.param)
     console.log("进入图表")
     wx.navigateTo({
-      url: '/pages/chart/chart',
+      url: '/pages/chart/chart?param=' + JSON.stringify(e.currentTarget.dataset.param),
     })
   },
 

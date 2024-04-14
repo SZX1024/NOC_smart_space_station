@@ -6,14 +6,14 @@ function setOption(chart) {
   const option = {
     xAxis: {
       type: "category",
-      data: ['Mon', 'Tue', 'Wed', "Thu", 'Fri', 'Sat', 'Sun']
+      data: ["none"]
     },
     yAxis: {
       type: 'value'
     },
     series: [
       {
-      data: [150, 230, 224, 218, 135, 147, 260],
+      data: [0],
       type: "line"
       }
     ]
@@ -24,12 +24,47 @@ function setOption(chart) {
 Page({
 
   onLoad(options) {
-    console.log(app.globalData.chart_temp)
+    let data = JSON.parse(options.param)
+
+    wx.setNavigationBarTitle({
+      title: data.text + "记录",
+    })
+
+    let data_index = data.text === "温度" ? "chart_temp" : data.text === "湿度" ? "chart_rh" :
+     data.text === "烟雾" ? "chart_mq_2" : "chart_lx"
+
+
+    console.log(data_index)
+
+    console.log(app.globalData[data_index])
+
+    this.setData({
+      chartData : app.globalData[data_index]
+    })
   },
 
   onReady: function () {
     // 获取组件
     this.ecComponent = this.selectComponent('#mychart-dom-bar');
+    this.init()
+    setTimeout(() => {
+      console.log(this.data.chartData);
+      this.data.chartData.length && this.chart.setOption({
+        xAxis: {
+            type: "category",
+            data: this.data.chartData.map(item => item[0]),
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+            data: this.data.chartData.map(item => item[1]),
+            type: "line"
+            }
+          ]
+        })
+    }, 500);
   },
 
   data: {
@@ -38,7 +73,8 @@ Page({
       lazyLoad: true
     },
     isLoaded: false,
-    isDisposed: false
+    isDisposed: false,
+    chartData: []
   },
 
   // 点击按钮后初始化图表
@@ -74,5 +110,24 @@ Page({
     this.setData({
       isDisposed: true
     });
+  },
+  clearAllData(){
+    app.globalData.chart_temp = [];
+    app.globalData.chart_rh = [];
+    app.globalData.chart_mq_2 = [];
+    app.globalData.chart_lx = [];
+
+    wx.getStorageSync('chart_temp') && wx.removeStorageSync('chart_temp');
+    wx.getStorageSync('chart_rh') && wx.removeStorageSync('chart_rh');
+    wx.getStorageSync('chart_mq_2') && wx.removeStorageSync('chart_mq_2');
+    wx.getStorageSync('chart_lx') && wx.removeStorageSync('chart_lx');
+
+    wx.showToast({
+      title: '清除成功',
+    })
+
+    setTimeout(() => {
+      wx.navigateBack()
+    }, 1500);
   }
 });
