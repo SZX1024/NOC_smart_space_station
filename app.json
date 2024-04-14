@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/chart/chart"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "舱内环境终端",
+    "navigationBarBackgroundColor": "#87cefa"
+  },
+  "sitemapLocation": "sitemap.json"
+}
