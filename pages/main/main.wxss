@@ -1,4 +1,5 @@
 /* pages/main/main.wxss */
+
 .head {
   display: flex;
   flex-wrap: wrap;

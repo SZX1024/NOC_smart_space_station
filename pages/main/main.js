@@ -5,7 +5,7 @@ import { formatTime } from "../../utils/util";
 const app = getApp();
 const MQTTADDRESS = "iae7574a.ala.cn-hangzhou.emqxsl.cn"; //mqtt服务器地址
 let client = null; //mqtt服务
-
+s
 // console.log(formatTime(new Date()).slice(5))
 
 Page({
@@ -94,12 +94,14 @@ Page({
     subaddr: wx.getStorageSync('subaddr')
   },
 
+  // 生命周期
   onLoad(options) {
 
   },
   onReady() {
     this.connectMqtt()
   },
+
   // mqtt 连接
   connectMqtt() {
     let that = this;
@@ -232,31 +234,35 @@ Page({
       }
     });
   },
-  passwdsync(e) {
+
+  // 页面数据绑定
+  passwdSync(e) {
     this.setData({
       password: e.detail.value
     })
   },
-  usernamesync(e) {
+  usernameSync(e) {
     this.setData({
       username: e.detail.value
     })
   },
-  portsync(e) {
+  portSync(e) {
     this.setData({
       port: e.detail.value
     })
   },
-  addresssync(e) {
+  addressSync(e) {
     this.setData({
       address: e.detail.value
     })
   },
-  pushaddrsync(e) {
+  pushaddrSync(e) {
     this.setData({
       pushaddr: e.detail.value
     })
   },
+
+  // 页面切换
   gotoSettingPage() {
     console.log("打开设置界面")
     this.setData({ isSetting: true })
@@ -271,6 +277,8 @@ Page({
       url: '/pages/chart/chart',
     })
   },
+
+  // 事件处理
   sysChange(e) {
     let clickData = e.target.dataset.param
     let dataPath = "sensor[" + String(clickData.id) + "].isOpen"
