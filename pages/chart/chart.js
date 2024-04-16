@@ -19,7 +19,7 @@ function setOption(chart) {
       trigger: 'axis'
     },
     xAxis: {
-      type: "category",
+      type: "time",
       data: ["none"]
     },
     yAxis: {
@@ -71,8 +71,16 @@ Page({
     // 获取组件
     this.ecComponent = this.selectComponent('#mychart-dom-bar');
     this.init()
-    setTimeout(() => {
-      console.log(this.data.chartData);
+    
+    setInterval(() => {
+      console.log("定时器启动", this.data.chartData);
+      if (this.data.chartData.length > 128) {
+        console.log(this.data.chartData.length)
+        let count = this.data.chartData.length - 128
+        for (let i = 0; i < count; i++) {
+          this.data.chartData.shift()
+        }
+      }
       this.data.chartData.length && this.chart.setOption({
         xAxis: {
             type: "category",
@@ -87,9 +95,13 @@ Page({
             data: this.data.chartData.map(item => item[1]),
             type: "line"
             }
-          ]
-        })
-    }, 500);
+          ],
+        });
+    },500);
+  },
+
+  onHide() {
+    clearInterval(1)
   },
 
   data: {
