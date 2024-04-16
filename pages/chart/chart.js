@@ -4,17 +4,38 @@ const app = getApp();
 
 function setOption(chart) {
   const option = {
+    legend: {
+      data: ['A'],
+      top: 50,
+      left: 'center',
+      backgroundColor: 'white',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
     xAxis: {
       type: "category",
       data: ["none"]
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
     },
     series: [
       {
+      name: "none",
       data: [0],
-      type: "line"
+      type: "line",
+      smooth: true
       }
     ]
   };
@@ -25,6 +46,9 @@ Page({
 
   onLoad(options) {
     let data = JSON.parse(options.param)
+    this.setData({
+      data : JSON.parse(options.param)
+    })
 
     wx.setNavigationBarTitle({
       title: data.text + "记录",
@@ -59,6 +83,7 @@ Page({
           },
           series: [
             {
+            name: this.data.data.text,
             data: this.data.chartData.map(item => item[1]),
             type: "line"
             }
@@ -68,6 +93,7 @@ Page({
   },
 
   data: {
+    data: "none",
     ec: {
       // 将 lazyLoad 设为 true 后，需要手动初始化图表
       lazyLoad: true

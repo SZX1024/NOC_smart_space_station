@@ -138,6 +138,7 @@ Page({
         that.setData({
           "sensor[0].value": Number(getMessageObj.aht20_temp)
         })
+        wx.setStorageSync('aht20_temp', Number(getMessageObj.aht20_temp))
         app.globalData.chart_temp.push(
           [formatTime(new Date()).slice(5), Number(getMessageObj.aht20_temp)]
         )
@@ -146,6 +147,7 @@ Page({
         that.setData({
           "sensor[1].value": Number(getMessageObj.aht20_rh)
         })
+        wx.setStorageSync('aht20_rh', Number(getMessageObj.aht20_rh))
         app.globalData.chart_rh.push(
           [formatTime(new Date()).slice(5), Number(getMessageObj.aht20_rh)]
         )
@@ -154,6 +156,7 @@ Page({
         that.setData({
           "sensor[2].value": Number(getMessageObj.mq_2)
         })
+        wx.setStorageSync('mq_2', Number(getMessageObj.mq_2))
         app.globalData.chart_mq_2.push(
           [formatTime(new Date()).slice(5), Number(getMessageObj.mq_2)]
         )
@@ -162,6 +165,7 @@ Page({
         that.setData({
           "sensor[3].value": Number(getMessageObj.bh1750_lx)
         })
+        wx.setStorageSync('bh1750_lx', Number(getMessageObj.bh1750_lx))
         app.globalData.chart_lx.push(
           [formatTime(new Date()).slice(5), Number(getMessageObj.bh1750_lx)]
         )
