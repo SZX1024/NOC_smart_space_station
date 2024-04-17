@@ -4,6 +4,20 @@ const app = getApp();
 
 function setOption(chart) {
   const option = {
+    dataZoom:
+      [{   //默认控制x轴
+           type:'slider',//图标下方的伸缩条
+           show:true,//是否显示
+           xAxisIndex:[0],	//控制x轴，数组可以同时控制多个轴
+           realtime:true,
+           start:40,    //伸缩条开始位置
+           end:20      //伸缩条结束位置
+       },{
+            // type:'inside',		//滚动条内置在坐标系中
+            xAxisIndex: [0],
+            start: 0,
+            end:40
+      }],
     legend: {
       data: ['A'],
       top: 50,
@@ -74,9 +88,9 @@ Page({
     
     setInterval(() => {
       console.log("定时器启动", this.data.chartData);
-      if (this.data.chartData.length > 128) {
+      if (this.data.chartData.length > 12 * 60 * 60 * 2) {
         console.log(this.data.chartData.length)
-        let count = this.data.chartData.length - 128
+        let count = this.data.chartData.length - 12 * 60 * 60 * 2
         for (let i = 0; i < count; i++) {
           this.data.chartData.shift()
         }
