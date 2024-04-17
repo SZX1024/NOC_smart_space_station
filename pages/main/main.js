@@ -84,6 +84,7 @@ Page({
     isConnect: false,
     isPush: false,
     isSub: false,
+    isRemoveDataPage: false,
 
     address: wx.getStorageSync('address'),
     port: wx.getStorageSync('port'),
@@ -308,6 +309,18 @@ Page({
     console.log("进入图表")
     wx.navigateTo({
       url: '/pages/chart/chart?param=' + JSON.stringify(e.currentTarget.dataset.param),
+    })
+  },
+
+  gotoRemoveDataPage(e) {
+    console.log(14313214134)
+    this.setData({
+      isRemoveDataPage: true
+    })
+  },
+  leaveRemoveDataPage() {
+    this.setData({
+      isRemoveDataPage: false
     })
   },
 

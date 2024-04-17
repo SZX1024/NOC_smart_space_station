@@ -16,7 +16,7 @@
   <text>环境信息</text>
 </view>
 <view class="info_out" wx:if="{{isPush}}">
-  <view class="info_out_item" bind:tap='toChart' wx:for="{{sensor}}" data-param="{{item}}">
+  <view class="info_out_item" bind:tap='toChart' wx:for="{{sensor}}" data-param="{{item}} " bind:longpress="gotoRemoveDataPage">
     <text>{{item.text}}</text>
     <image src="{{item.img}}" mode="aspectFit"/>
     <text>{{item.value + item.end_text}}</text>
@@ -92,3 +92,8 @@
   </view>
 
 </page-container>
+
+<!--信息清除弹窗-->
+<van-popup show="{{isRemoveDataPage}}" bind:close="leaveRemoveDataPage" bind:leave="leaveRemoveDataPage" round>
+  114514143412
+</van-popup>
