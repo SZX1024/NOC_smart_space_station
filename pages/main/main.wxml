@@ -12,7 +12,7 @@
 
 <!--信息展示区域 4x1-->
 
-<view class="second_title">
+<!-- <view class="second_title">
   <text>环境信息</text>
 </view>
 <view class="info_out" wx:if="{{isPush}}">
@@ -23,7 +23,7 @@
   </view>
 </view>
 
-<!--控制区域 2x3-->
+控制区域 2x3
 
 <view class="second_title">
   <text>控制面板</text>
@@ -34,17 +34,17 @@
     <image src="{{item.img}}" mode="aspectFit"/>
     <switch checked="{{item.isOpen}}" bindchange="sysChange" color="#b2dcef" data-param="{{item}}"/>
   </view>
-</view>
+</view> -->
 
 <!--弹窗-->
 
 <page-container show="{{isSetting}}" round position="bottom" bind:leave="leaveSettingPage">
 
-  <!--设置-->
+<view class="page-container">
+    <!--设置-->
 
   <!--mqtt信息-->
   <view class="setting_aera">
-    <text class="second_title" style="margin-left: 32rpx; padding-bottom: 12rpx;">mqtt配置</text>
     <view class="setting_item">
       <text>地址</text>
       <input type="text" value="{{address}}" bindinput="addressSync" disabled="{{isConnect}}"/>
@@ -90,6 +90,7 @@
         <button type="default" size="mini" bind:tap="unSub" disabled="{{!isSub}}">取消连接</button>
       </view>
   </view>
+</view>
 
 </page-container>
 
