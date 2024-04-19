@@ -313,7 +313,6 @@ Page({
   },
 
   gotoRemoveDataPage(e) {
-    console.log(14313214134)
     this.setData({
       isRemoveDataPage: true
     })
