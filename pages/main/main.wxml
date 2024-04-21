@@ -10,31 +10,35 @@
   </view>
 </view>
 
+
+<!-- <view class="container">
+  <ec-canvas id="mychart-dom-multi-scatter" canvas-id="mychart-multi-scatter" ec="{{ ecScatter }}"></ec-canvas>
+</view> -->
+
 <!--信息展示区域 4x1-->
 
-<!-- <view class="second_title">
-  <text>环境信息</text>
-</view>
 <view class="info_out" wx:if="{{isPush}}">
-  <view class="info_out_item" bind:tap='toChart' wx:for="{{sensor}}" data-param="{{item}} " bind:longpress="gotoRemoveDataPage">
-    <text>{{item.text}}</text>
-    <image src="{{item.img}}" mode="aspectFit"/>
-    <text>{{item.value + item.end_text}}</text>
+  <view>
+    <view class="info_out_item" wx:for="{{sensor}}" bind:tap="toChart" data-param="{{item}}">
+      <view class="info_out_item_data">
+        <image src="{{item.img}}" mode="aspectFit"/>
+        <text>{{item.text}}</text>
+        <text>{{item.value + item.end_text}}</text>
+      </view>
+      <!-- chart -->
+    </view>
   </view>
 </view>
 
-控制区域 2x3
+<!--控制区域 2x3-->
 
-<view class="second_title">
-  <text>控制面板</text>
-</view>
 <view class="ctrl_aera" wx:if="{{isSub}}">
   <view class="ctrl_aera_item" wx:for="{{device}}">
     <text>{{item.type}}</text>
     <image src="{{item.img}}" mode="aspectFit"/>
     <switch checked="{{item.isOpen}}" bindchange="sysChange" color="#b2dcef" data-param="{{item}}"/>
   </view>
-</view> -->
+</view>
 
 <!--弹窗-->
 
@@ -67,8 +71,9 @@
       </view>
   </view>
 
-  <!--订阅-->
   <view class="setting_aera">
+
+    <!--订阅-->
     <view class="setting_item">
       <text>订阅</text>
       <input type="text" placeholder="请输入订阅地址" value="{{pushaddr}}" bindinput="pushaddrSync" disabled="{{isPush}}"/>
@@ -77,10 +82,8 @@
       <button type="default" size="mini" bind:tap="addPush" disabled="{{isPush}}">订阅</button>
       <button type="default" size="mini" bind:tap="unPush" disabled="{{!isPush}}">取消订阅</button>
     </view>
-  </view>
 
   <!--发布-->
-  <view class="setting_aera">
     <view class="setting_item">
       <text>发布</text>
       <input type="text" placeholder="请输入发布地址" disabled="{{isSub}}" bindinput="subaddrSync" value="{{subaddr}}"/>
@@ -96,5 +99,8 @@
 
 <!--信息清除弹窗-->
 <van-popup show="{{isRemoveDataPage}}" bind:close="leaveRemoveDataPage" bind:leave="leaveRemoveDataPage" round>
-  114514143412
 </van-popup>
+
+
+<ec-canvas id="mychart-dom-multi-bar" canvas-id="mychart-multi-bar" ec="{{ ecBar }}"></ec-canvas>
+<ec-canvas id="mychart-dom-multi-scatter" canvas-id="mychart-multi-scatter" ec="{{ ecScatter }}"></ec-canvas>

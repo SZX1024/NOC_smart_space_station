@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/main/main"
+    "pages/main/main",
+    "pages/chart/chart"
   ],
   "window": {
     "navigationBarTextStyle": "white",

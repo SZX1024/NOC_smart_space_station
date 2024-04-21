@@ -1,5 +1,10 @@
 /* pages/main/main.wxss */
 
+.chart {
+  height: 128rpx;
+  width: 128rpx;
+}
+
 .head {
   display: flex;
   flex-wrap: wrap;
@@ -28,10 +33,10 @@
 }
 
 .second_title {
-  font-size: 38rpx;
-  margin: 16rpx;
-  margin-top: 48rpx;
-  margin-bottom: 16rpx;
+  font-size: 9.5rpx;
+  margin: 4rpx;
+  margin-top: 12rpx;
+  margin-bottom: 4rpx;
 }
 
 .mqtt_info {
@@ -44,13 +49,13 @@
 .info_out {
   display: flex;
   flex-wrap: wrap;
-  border-radius: 32rpx;
-  margin: 0 16rpx;
-  margin-top: 32rpx;
+  border-radius: 8rpx;
+  margin: 0 4rpx;
+  margin-top: 8rpx;
 }
 
 .info_out_item {
-  width: 21.66%;
+  width: 156rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,21 +63,26 @@
   border-right: 1rpx solid #efefef;
   border-bottom: 1rpx solid #efefef;
   box-sizing: border-box;
-  margin: 12rpx;
-  border-radius: 32rpx;
-  box-shadow: 0 8rpx 20rpx 0 rgba(0, 0, 0, 0.3);
+  margin: 10rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 5rpx 0 rgba(0, 0, 0, 0.3);
 }
 
 .info_out_item image {
-  width: 60rpx;
-  height: 60rpx;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  width: 24rpx;
+  height: 24rpx;
+
+  margin-top: 6rpx;
 }
 
 .info_out_item text {
-  font-size: 24rpx;
-  margin-top: 10rpx;
+  font-size: 12rpx;
+  margin-top: 5rpx;
+}
+
+.info_out_item_data {
+  display: inline-flex;
+  text-align: right;
 }
 
 .ctrl_aera {
@@ -120,7 +130,7 @@
 }
 
 .setting_aera {
-  width: 32.25%;
+  width: 48.77%;
   margin: 4rpx;
   margin-top: 8rpx;
   padding-top: 2rpx;
@@ -163,7 +173,7 @@
   width: 72rpx;
   color: #ffffff;
   background-color: #b2dcef;
-  margin-top: 2px;
+  margin-top: 2rpx;
   margin-bottom: 2rpx;
   box-shadow: 0 1rpx 2.5rpx 0 rgba(0, 0, 0, 0.3);
 }

@@ -2,6 +2,7 @@
 
 import mqtt from "../../utils/mqtt.min";
 import { formatTime } from "../../utils/util";
+import * as echarts from '../../ec-canvas/echarts';
 const app = getApp();
 const MQTTADDRESS = "iae7574a.ala.cn-hangzhou.emqxsl.cn"; //mqtt服务器地址
 let client = null; //mqtt服务
@@ -92,7 +93,35 @@ Page({
     password: wx.getStorageSync('password'),
 
     pushaddr: wx.getStorageSync('pushaddr'),
-    subaddr: wx.getStorageSync('subaddr')
+    subaddr: wx.getStorageSync('subaddr'),
+
+    ecBar: {
+      onInit: function (canvas, width, height, dpr) {
+        const barChart = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(barChart);
+        barChart.setOption(getBarOption());
+
+        return barChart;
+      }
+    },
+
+    ecScatter: {
+      onInit: function (canvas, width, height, dpr) {
+        const scatterChart = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(scatterChart);
+        scatterChart.setOption(getScatterOption());
+
+        return scatterChart;
+      }
+    }
   },
 
   // 生命周期
@@ -415,3 +444,81 @@ Page({
     });
   }
 })
+
+function getTempBarOption() {
+  return {
+    legend: {
+      data: ['A'],
+      top: 50,
+      left: 'center',
+      backgroundColor: 'white',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: "time",
+      data: ["none"]
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    series: [
+      {
+      name: "none",
+      data: [0],
+      type: "line",
+      smooth: true
+      }
+    ]
+  }
+}
+
+function getBarOption() {
+  return {
+    legend: {
+      data: ['A'],
+      top: 50,
+      left: 'center',
+      backgroundColor: 'white',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: "time",
+      data: ["none"]
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    series: [
+      {
+      name: "none",
+      data: [0],
+      type: "line",
+      smooth: true
+      }
+    ]
+  }
+}
